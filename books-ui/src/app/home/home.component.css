@@ -31,13 +31,17 @@
     background-color: #333;
 }
 
-:host ::ng-deep .p-select:not(.p-disabled):hover {
-    border-color: #2196F3;
-}
-
 :host ::ng-deep .p-select:not(.p-disabled).p-focus {
     box-shadow: 0 0 0 2px #2196F3;
     border-color: #2196F3;
+}
+
+:host ::ng-deep .p-select-option.p-select-option-selected {
+  background: color-mix(in srgb, #2196F3, transparent 76%);
+}
+
+:host ::ng-deep .p-select-option.p-select-option-selected.p-focus {
+  background: color-mix(in srgb, #2196F3, transparent 76%);
 }
 
 :host ::ng-deep .p-select-label {
@@ -57,13 +61,9 @@
     border: 1px solid #444;
 }
 
-:host ::ng-deep .p-inputnumber-input:hover {
-    border-color: #2196F3;
-}
-
-:host ::ng-deep .p-inputnumber-input:focus {
-    box-shadow: 0 0 0 2px #2196F3;
-    border-color: #2196F3;
+:host ::ng-deep .p-inputtext:enabled:focus {
+  box-shadow: 0 0 0 2px #2196F3;
+  border-color: #2196F3;
 }
 
 .button-container {
@@ -81,25 +81,3 @@
     background-color: #1976D2;
 }
 
-:host ::ng-deep .p-select-panel {
-    background-color: #333;
-    border: 1px solid #444;
-}
-
-:host ::ng-deep .p-select-items {
-    padding: 0;
-}
-
-:host ::ng-deep .p-select-item {
-    color: #ffffff;
-    padding: 0.75rem 1rem;
-}
-
-:host ::ng-deep .p-select-item:hover {
-    background-color: #444;
-}
-
-:host ::ng-deep .p-select-item.p-highlight {
-    background-color: #2196F3;
-    color: #ffffff;
-}

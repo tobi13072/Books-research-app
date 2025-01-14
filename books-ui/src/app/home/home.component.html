@@ -1,6 +1,6 @@
 <div class="filter-container">
     <h1 class="title">Book Search</h1>
-    
+
     <div class="filter-step">
         <label class="filter-label">Category:</label>
         <p-select
@@ -27,18 +27,18 @@
 
     <div class="filter-step">
         <label class="filter-label">Maximum price ($):</label>
-        <p-inputNumber 
+        <p-inputNumber
             [(ngModel)]="filters.max_price"
             [min]="0"
             [max]="1000"
-            mode="currency" 
+            mode="currency"
             currency="USD">
         </p-inputNumber>
     </div>
 
     <div class="filter-step">
         <label class="filter-label">Maximum pages:</label>
-        <p-inputNumber 
+        <p-inputNumber
             [(ngModel)]="filters.max_pages"
             [min]="0"
             [max]="2000">
@@ -46,10 +46,11 @@
     </div>
 
     <div class="button-container">
-        <p-button 
-            label="Search books" 
+        <p-button
+            label="Search books"
             (onClick)="searchBooks()"
-            [disabled]="!isAnyFilterSet()">
+            [disabled]="!isAnyFilterSet()"
+            severity="info">
         </p-button>
     </div>
 </div>
