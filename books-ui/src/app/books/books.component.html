@@ -1,0 +1,101 @@
+<div class="books-container">
+    <p-card>
+        <div class="header">
+            <h2>Found Books</h2>
+            <div class="search-params" *ngIf="searchParams">
+                <p>Search parameters:</p>
+                <ul>
+                    <li *ngIf="searchParams['category']">Category: {{searchParams['category']}}</li>
+                    <li *ngIf="searchParams['language']">Language: {{searchParams['language']}}</li>
+                    <li *ngIf="searchParams['max_price']">Maximum price: ${{searchParams['max_price']}}</li>
+                    <li *ngIf="searchParams['max_pages']">Maximum pages: {{searchParams['max_pages']}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="books-list" *ngIf="foundBooks.length > 0">
+            <p-card *ngFor="let book of foundBooks" class="book-item" (click)="showBookDetails(book.book)">
+                <h3>{{formatText(book.book)}}</h3>
+            </p-card>
+        </div>
+
+        <div class="no-results" *ngIf="foundBooks.length === 0">
+            <p>No books found matching your criteria.</p>
+        </div>
+
+        <div class="footer">
+            <p-button
+                label="Back to search"
+                (onClick)="goBack()"
+                severity="secondary">
+            </p-button>
+        </div>
+    </p-card>
+
+    <p-dialog
+        header="Book Details"
+        [modal]="true"
+        [(visible)]="showDialog"
+        [style]="{ width: '800px' }"
+        [draggable]="false"
+        [resizable]="false"
+        [closeOnEscape]="true"
+        [showHeader]="true"
+        [dismissableMask]="true">
+        <div class="book-details" *ngIf="selectedBook">
+            <div class="book-layout">
+                <div class="cover-container">
+                    <div class="loading-container" *ngIf="isLoadingCover">
+                        <p-progressSpinner strokeWidth="4"></p-progressSpinner>
+                    </div>
+                    <img
+                        [src]="booksService.getFullImageUrl(selectedBook.cover_url)"
+                        alt="Book cover"
+                        class="book-cover"
+                        [class.hidden]="isLoadingCover">
+                </div>
+                <div class="details-container">
+                    <div class="detail-row">
+                        <span class="label">Title:</span>
+                        <span class="value">{{formatText(selectedBook.title)}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Category:</span>
+                        <span class="value">{{formatText(selectedBook.category)}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Language:</span>
+                        <span class="value">{{selectedBook.language}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Pages:</span>
+                        <span class="value">{{selectedBook.pages}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Price:</span>
+                        <span class="value">${{selectedBook.price}}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Purpose:</span>
+                        <span class="value">{{selectedBook.purpose}}</span>
+                    </div>
+                </div>
+            </div>
+            <p-divider></p-divider>
+            <div class="suggested-book">
+                <h3>Suggested next books:</h3>
+                <div class="suggested-list" *ngIf="selectedBook?.suggested_next_books && selectedBook.suggested_next_books.length > 0">
+                    <p *ngFor="let book of selectedBook.suggested_next_books">
+                      <p-button label="{{formatText(book)}}" severity="secondary" (onClick)="showBookDetails(book)"/>
+                    </p>
+                </div>
+                <div class="no-suggestions" *ngIf="!selectedBook?.suggested_next_books || selectedBook.suggested_next_books.length === 0">
+                    <i class="pi pi-info-circle"></i>
+                    <p>No book suggestions available.</p>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div>

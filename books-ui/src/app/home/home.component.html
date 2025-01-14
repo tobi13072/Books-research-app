@@ -1,0 +1,55 @@
+<div class="filter-container">
+    <h1 class="title">Book Search</h1>
+    
+    <div class="filter-step">
+        <label class="filter-label">Category:</label>
+        <p-select
+            [(ngModel)]="filters.category"
+            [options]="categories"
+            optionLabel="label"
+            optionValue="value"
+            [showClear]="true"
+            placeholder="Select category">
+        </p-select>
+    </div>
+
+    <div class="filter-step">
+        <label class="filter-label">Language:</label>
+        <p-select
+            [(ngModel)]="filters.language"
+            [options]="languages"
+            optionLabel="label"
+            optionValue="value"
+            [showClear]="true"
+            placeholder="Select language">
+        </p-select>
+    </div>
+
+    <div class="filter-step">
+        <label class="filter-label">Maximum price ($):</label>
+        <p-inputNumber 
+            [(ngModel)]="filters.max_price"
+            [min]="0"
+            [max]="1000"
+            mode="currency" 
+            currency="USD">
+        </p-inputNumber>
+    </div>
+
+    <div class="filter-step">
+        <label class="filter-label">Maximum pages:</label>
+        <p-inputNumber 
+            [(ngModel)]="filters.max_pages"
+            [min]="0"
+            [max]="2000">
+        </p-inputNumber>
+    </div>
+
+    <div class="button-container">
+        <p-button 
+            label="Search books" 
+            (onClick)="searchBooks()"
+            [disabled]="!isAnyFilterSet()">
+        </p-button>
+    </div>
+</div>

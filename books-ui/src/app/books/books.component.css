@@ -1,0 +1,144 @@
+.books-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.header h2 {
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.search-params {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.search-params p {
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.search-params ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-params li {
+  padding: 0.5rem 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.books-list {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.book-item {
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.book-item:hover {
+  transform: translateY(-5px);
+  background-color: #444;
+}
+
+.no-results {
+  text-align: center;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Style dla dialogu */
+
+
+:host ::ng-deep .p-dialog .p-dialog-title {
+  font-size: 1.7rem;
+}
+
+.book-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.cover-container {
+  flex: 0 0 200px;
+  position: relative;
+  min-height: 300px;
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.book-cover {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.details-container {
+  flex: 1;
+}
+
+.book-details .detail-row {
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #333;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+
+.book-details .label {
+  flex: 0 0 120px;
+  font-weight: 600;
+  color: #90caf9;
+}
+
+@media (max-width: 600px) {
+  .book-layout {
+    flex-direction: column;
+  }
+
+  .cover-container {
+    flex: 0 0 auto;
+    margin-bottom: 1rem;
+  }
+}
+
+.suggested-book {
+  padding: 1rem;
+  text-align: center;
+}
+
+.suggested-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
