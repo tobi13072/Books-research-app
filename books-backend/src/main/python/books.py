@@ -51,7 +51,7 @@ def get_book_details(book_title):
 
     if results:
         book = results[0]
-        cover_path = os.path.join('covers', f'{book_title}.png')
+        cover_path = os.path.join('covers', f'{book_title}.jpg')
 
         if os.path.exists(cover_path):
             cover_url = f'/book/{book_title}/cover'
@@ -80,8 +80,8 @@ def get_book_details(book_title):
 
 @app.route("/book/<book_title>/cover", methods=["GET"])
 def get_book_cover(book_title):
-    cover_path = os.path.join('covers', f'{book_title}.png')
+    cover_path = os.path.join('covers', f'{book_title}.jpg')
     if os.path.exists(cover_path):
-        return send_file(cover_path, mimetype='image/png')
+        return send_file(cover_path, mimetype='image/jpeg')
     else:
         return jsonify({"error": "Cover not found"}), 404 
