@@ -80,3 +80,4 @@ fabric.properties
 /books-ui/.vscode/
 /books-backend/.venv/
 /.idea/
+/books-backend/src/main/python/__pycache__/
